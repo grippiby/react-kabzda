@@ -4,6 +4,24 @@ type AccordeonPropsType = {
 }
 
 export function Accordeon(props: AccordeonPropsType) {
+	/* if (props.collapsed) {
+		return (
+			<>
+				<AccordeonTitle title={props.titleValue}></AccordeonTitle>
+				<div>Было свернуто, пож разверните</div>
+			</>
+		)
+	} */
+	return (
+		<>
+			<AccordeonTitle title={props.titleValue}></AccordeonTitle>
+			{props.collapsed && <div>Было свернуто, пож разверните</div>}
+			{!props.collapsed && <AccordeonBody></AccordeonBody>}
+		</>
+	)
+}
+
+/* export function Accordeon(props: AccordeonPropsType) {
 	if (props.collapsed) {
 		return (
 			<>
@@ -18,7 +36,8 @@ export function Accordeon(props: AccordeonPropsType) {
 			<AccordeonBody></AccordeonBody>
 		</>
 	)
-}
+} */
+
 type AccordeonTitlePropsType = { title: string }
 function AccordeonTitle(props: AccordeonTitlePropsType) {
 	return (
