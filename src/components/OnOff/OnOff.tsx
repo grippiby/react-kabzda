@@ -1,29 +1,38 @@
-import styles from './OnOff.module.css'
+import styles from "./OnOff.module.css";
+import { useState } from "react";
 
 type OnOffPropsType = {
-	state: boolean
-}
+  /*  state: boolean;*/
+};
 
-export function OnOff(props: OnOffPropsType) {
-	let color = null
-	const red = styles.off
-	const green = styles.on
-	props.state ? (color = red) : (color = green)
-	return (
-		<div className={styles.root}>
-			{props.state && (
-				<>
-					<div className={color}>On</div> <div>Off</div>
-				</>
-			)}
-			{!props.state && (
-				<>
-					<div>On</div> <div className={color}>Off</div>
-				</>
-			)}
-			<div className={`${styles.circle} ${color}`}></div>
-		</div>
-	)
+export function OnOff() {
+  const red = styles.off;
+  const green = styles.on;
+  const [switcher, setSwitcher] = useState(false);
+
+  return (
+    <div className={styles.root}>
+      <>
+        <div
+          className={switcher ? green : undefined}
+          onClick={() => {
+            setSwitcher(true);
+          }}
+        >
+          On
+        </div>
+        <div
+          className={switcher ? undefined : red}
+          onClick={() => {
+            setSwitcher(false);
+          }}
+        >
+          Off
+        </div>
+      </>
+      <div className={`${styles.circle} ${switcher ? green : red}`}></div>
+    </div>
+  );
 }
 
 /* import styles from './OnOff.module.css'

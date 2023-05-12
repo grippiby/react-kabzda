@@ -1,30 +1,39 @@
-import React from 'react'
-import { Accordeon } from './components/Accordeon/Accordeon'
-import { OnOff } from './components/OnOff/OnOff'
-import { Rating } from './components/Rating/Rating'
+import React from "react";
+import { OnOff } from "./components/OnOff/OnOff";
+import { Rating } from "./components/Rating/Rating";
+import { UncollapsedAccordeon } from "./components/Accordeon/UncollapsedAccordeon";
+import { UncontrollRating } from "./components/Rating/UncontrollRating";
 
 function App(props: any) {
-	return (
-		<div className="App">
-			<OnOff state={true}></OnOff>
-			<OnOff state={false}></OnOff>
-			<PageTitle title={'Hello IT-KAMASUTRA'} />
-			<Rating value={3} />
-			<Accordeon titleValue={'MENU'} collapsed={true}></Accordeon>
-			<Accordeon titleValue={'USERS'} collapsed={false}></Accordeon>
+  return (
+    <div className="App">
+      <OnOff></OnOff>
+      <OnOff></OnOff>
+      <PageTitle title={"Hello IT-KAMASUTRA"} />
+      <Rating value={3} />
+      {/*   <Accordeon titleValue={"MENU"} collapsed={true}></Accordeon>
+      <Accordeon titleValue={"USERS"} collapsed={false}></Accordeon>*/}
+      <UncollapsedAccordeon titleValue={"MENU"}></UncollapsedAccordeon>
+      <UncollapsedAccordeon titleValue={"USERS"}></UncollapsedAccordeon>
 
-			<Rating value={1} />
-			<Rating value={2} />
-			<Rating value={3} />
-			<Rating value={4} />
-			<Rating value={5} />
-		</div>
-	)
+      <UncontrollRating></UncontrollRating>
+      <UncontrollRating></UncontrollRating>
+      <Rating value={4} />
+      {/*      <Rating value={1} />
+      <Rating value={2} />
+      <Rating value={3} />
+      <Rating value={4} />
+      <Rating value={5} />*/}
+    </div>
+  );
 }
+
 type PageTitlePropsType = {
-	title: string
-}
+  title: string;
+};
+
 function PageTitle(props: PageTitlePropsType) {
-	return <h1>{props.title}</h1>
+  return <h1>{props.title}</h1>;
 }
-export default App
+
+export default App;
