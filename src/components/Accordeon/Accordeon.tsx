@@ -1,22 +1,28 @@
 type AccordeonPropsType = {
   titleValue: string;
-  collapsed: boolean;
+  accordionCollapsed: boolean;
+  setAccordionCollapsed: (e: boolean) => void;
 };
 
 export function Accordeon(props: AccordeonPropsType) {
   /* if (props.collapsed) {
-          return (
-              <>
-                  <AccordeonTitle title={props.titleValue}></AccordeonTitle>
-                  <div>Было свернуто, пож разверните</div>
-              </>
-          )
-      } */
+                                                                    return (
+                                                                        <>
+                                                                            <AccordeonTitle title={props.titleValue}></AccordeonTitle>
+                                                                            <div>Было свернуто, пож разверните</div>
+                                                                        </>
+                                                                    )
+                                                                } */
+
   return (
     <>
-      <AccordeonTitle title={props.titleValue}></AccordeonTitle>
-      {props.collapsed && <div>Было свернуто, пож разверните</div>}
-      {!props.collapsed && <AccordeonBody></AccordeonBody>}
+      <AccordeonTitle
+        accordionCollapsed={props.accordionCollapsed}
+        title={props.titleValue}
+        setAccordionCollapsed={props.setAccordionCollapsed}
+      ></AccordeonTitle>
+      {props.accordionCollapsed && <div>Было свернуто, пож разверните</div>}
+      {!props.accordionCollapsed && <AccordeonBody></AccordeonBody>}
     </>
   );
 }
@@ -38,12 +44,20 @@ export function Accordeon(props: AccordeonPropsType) {
 	)
 } */
 
-type AccordeonTitlePropsType = { title: string };
+type AccordeonTitlePropsType = {
+  title: string;
+  setAccordionCollapsed: (e: boolean) => void;
+  accordionCollapsed: boolean;
+};
 
 function AccordeonTitle(props: AccordeonTitlePropsType) {
   return (
     <div>
-      <h1>{props.title}</h1>
+      <h1
+        onClick={() => props.setAccordionCollapsed(!props.accordionCollapsed)}
+      >
+        {props.title}
+      </h1>
     </div>
   );
 }

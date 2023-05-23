@@ -5,14 +5,6 @@ type AccordeonPropsType = {
 };
 
 export function UncollapsedAccordeon(props: AccordeonPropsType) {
-  /* if (props.collapsed) {
-                                                                                                  return (
-                                                                                                      <>
-                                                                                                          <AccordeonTitle title={props.titleValue}></AccordeonTitle>
-                                                                                                          <div>Было свернуто, пож разверните</div>
-                                                                                                      </>
-                                                                                                  )
-                                                                                              } */
   const [collapsed, setCollapsed] = useState(false);
   return (
     <>

@@ -1,36 +1,36 @@
-import styles from "./OnOff.module.css";
-import { useState } from "react";
+import styles from "./ControlledOnOff.module.css";
 
 type OnOffPropsType = {
-  /*  state: boolean;*/
+  on: boolean;
+  setOn: () => void;
 };
 
-export function OnOff() {
+export function ControlledOnOff(props: OnOffPropsType) {
   const red = styles.off;
   const green = styles.on;
-  const [switcher, setSwitcher] = useState(false);
 
+  console.log(props.on);
   return (
     <div className={styles.root}>
       <>
         <div
-          className={switcher ? green : undefined}
+          className={props.on ? green : undefined}
           onClick={() => {
-            setSwitcher(true);
+            props.setOn();
           }}
         >
           On
         </div>
         <div
-          className={switcher ? undefined : red}
+          className={props.on ? undefined : red}
           onClick={() => {
-            setSwitcher(false);
+            props.setOn();
           }}
         >
           Off
         </div>
       </>
-      <div className={`${styles.circle} ${switcher ? green : red}`}></div>
+      <div className={`${styles.circle} ${props.on ? green : red}`}></div>
     </div>
   );
 }
